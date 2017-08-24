@@ -4,65 +4,65 @@
 
 Lista imagenes docker
 
-`` docker images ``
+``docker images``
 
-Instala una imagen docker, aqui instalamos dos una imagen de postgres y otra de centos (siempre será en su última versión LATEST si no le agregas el la version con centos:6.2) 
+Instala una imagen docker, aqui instalamos dos una imagen de postgres y otra de centos (siempre será en su última versión LATEST si no le agregas el la version con centos:6.2)
 
-`` docker pull postgres ``
+``docker pull postgres``
 
-`` docker pull centos ``
+``docker pull centos``
 
 Lista informaciones de docker es interesante cambiar el tipo de controlador de  almacenamien(Storage Driver): aufs para overlay2 porque es más rápido
 
-`` docker info ``
+``docker info``
 
 ## Redes
 
 Lista redes de docker
 
-`` docker network ls ``
+``docker network ls``
 
 Si listamos con ifconfig las configuraciones de ip veremos que se crea por default una interface para conectarse mediante NAT
 
-`` sudo ifconfig ``
+``sudo ifconfig``
 
-***
-> **docker0**   Link encap:Ethernet  direcciónHW 0x:xX:Xx:xx:x5:45
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Direc. inet:**172.10.0.1**  Difus.:0.0.0.0  Másc:255.255.0.0
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ACTIVO DIFUSIÓN MULTICAST  MTU:1500  Métrica:1 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Paquetes RX:0 errores:0 perdidos:0 overruns:0 frame:0
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Paquetes TX:0 errores:0 perdidos:0 overruns:0 carrier:0 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; colisiones:0 long.colaTX:0
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bytes RX:0 (0.0 B)  TX bytes:0 (0.0 B) 
-***
+```
+**docker0**   Link encap:Ethernet  direcciónHW 0x:xX:Xx:xx:x5:45
+Direc. inet:**172.10.0.1**  Difus.:0.0.0.0  Másc:255.255.0.0
+ACTIVO DIFUSIÓN MULTICAST  MTU:1500  Métrica:1
+Paquetes RX:0 errores:0 perdidos:0 overruns:0 frame:0
+Paquetes TX:0 errores:0 perdidos:0 overruns:0 carrier:0
+colisiones:0 long.colaTX:0
+Bytes RX:0 (0.0 B)  TX bytes:0 (0.0 B)
+```
 
 Para crear una nueva red 
 
-`` docker network create --driver bridge redlocal ``
+``docker network create --driver bridge redlocal``
 
 Cuando listes las redes de docker aparece tu última red
 
-`` docker network ls ``
+``docker network ls``
 
-***
-> NETWORK ID          NAME                DRIVER              SCOPE
+```
+NETWORK ID          NAME                DRIVER              SCOPE
 a28ecacbbeb8        bridge              bridge              local               
 bfdba3c8d9d2        host                host                local               
 7d1495893dd1        none                null                local               
 **06356c8a86db        redlocal            bridge              local**
-***
+```
 
 Ahora si listas con ifconfig deberia aparecer tu ultima red creada es importante saber que esta nueva red no se podrá comunicar con docker0
 
-`` sudo ifconfig -s ``
+``sudo ifconfig -s``
 
-***
-> Iface MTU Met RX-OK RX-ERR RX-DRP RX-OVR TX-OK TX-ERR TX-DRP TX-OVR Flg
+```
+Iface MTU Met RX-OK RX-ERR RX-DRP RX-OVR TX-OK TX-ERR TX-DRP TX-OVR Flg
 **br-06356c8a86db  1500 0         0      0      0 0             0      0      0      0 BMU**
 docker0    1500 0         0      0      0 0             0      0      0      0 BMU
 enp0s25    1500 0         0      0      0 0             0      0      0      0 BMU
 lo        65536 0     35176      0      0 0         35176      0      0      0 LRU
-***
+```
 
 Si quieres ahora puedes ver que docker creara una nueva IP para conectarse via NAT
 
