@@ -6,13 +6,13 @@ Lista imagenes docker
 
 ``docker images``
 
-Instala una imagen docker, aqui instalamos dos una imagen de postgres y otra de centos (siempre será en su última versión LATEST si no le agregas el la version con centos:6.2)
+Instala una imagen docker, aqui instalamos dos una imagen de postgres y otra de centos, siempre será en su última versión LATEST si no le agregas la versión como por ejemplo: centos:6
 
 ``docker pull postgres``
 
 ``docker pull centos``
 
-Lista informaciones de docker es interesante cambiar el tipo de controlador de  almacenamien(Storage Driver): aufs para overlay2 porque es más rápido
+Lista informaciones de docker es interesante cambiar el tipo de controlador de almacenamiento (Storage Driver): aufs para overlay2 porque es más rápido
 
 ``docker info``
 
@@ -27,8 +27,8 @@ Si listamos con ifconfig las configuraciones de ip veremos que se crea por defau
 ``sudo ifconfig``
 
 ```bash
-`docker0`   Link encap:Ethernet  direcciónHW 0x:xX:Xx:xx:x5:45
-Direc. inet:`172.10.0.1`  Difus.:0.0.0.0  Másc:255.255.0.0
+*docker0*   Link encap:Ethernet  direcciónHW 0x:xX:Xx:xx:x5:45
+Direc. inet:172.10.0.1  Difus.:0.0.0.0  Másc:255.255.0.0
 ACTIVO DIFUSIÓN MULTICAST  MTU:1500  Métrica:1
 Paquetes RX:0 errores:0 perdidos:0 overruns:0 frame:0
 Paquetes TX:0 errores:0 perdidos:0 overruns:0 carrier:0
