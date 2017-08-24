@@ -26,9 +26,9 @@ Si listamos con ifconfig las configuraciones de ip veremos que se crea por defau
 
 ``sudo ifconfig``
 
-```
-**docker0**   Link encap:Ethernet  direcciónHW 0x:xX:Xx:xx:x5:45
-Direc. inet:**172.10.0.1**  Difus.:0.0.0.0  Másc:255.255.0.0
+```bash
+`docker0`   Link encap:Ethernet  direcciónHW 0x:xX:Xx:xx:x5:45
+Direc. inet:`172.10.0.1`  Difus.:0.0.0.0  Másc:255.255.0.0
 ACTIVO DIFUSIÓN MULTICAST  MTU:1500  Métrica:1
 Paquetes RX:0 errores:0 perdidos:0 overruns:0 frame:0
 Paquetes TX:0 errores:0 perdidos:0 overruns:0 carrier:0
